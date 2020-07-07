@@ -1,0 +1,68 @@
+<div class="mx-1">
+    <div class="col-md-12">
+        <a class="collapseBar col-md-12 text-uppercase" data-toggle="collapse" href="#eventExample" role="button"
+            aria-expanded="false" aria-controls="eventExample">
+            Assign Poc & Participant Emails
+        </a>
+        <div class="collapse" id="eventExample">
+            <div style="height: 500px;">
+                <div class="card card-body" style="height: 500px;overflow: auto;">
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Employee Id</th>
+                                <th>Name</th>
+                                <th>Employee Role</th>
+                                <th>Email</th>
+                                <td>Action</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let user of users; let i = index'>
+                                <td>{{i+1}}</td>
+                                <td>{{user.employeeId}}</td>
+                                <td>{{user.name}}</td>
+                                <td>
+                                    <span *ngIf='(user.role == 3) else userRole'>
+                                        <b>POC</b>
+                                    </span>
+                                    <ng-template #userRole>
+                                        <span>
+                                           <b>Participant</b>
+                                        </span>
+                                    </ng-template>
+
+                                </td>
+                                <td style="width:300px;">
+                                    <span *ngIf='(user.email != null) else emailAddBtn'>
+                                        {{user.email}}
+                                    </span>
+                                    <ng-template #emailAddBtn>
+                                        <span>
+                                            <input type="text" id="EmailAdd{{i}}" name="EmailAdd{{i}}" class="form-control"
+                                                placeholder="Enter Email" style="width: 200px;" [(ngModel)]='user.new'>
+                                        </span>
+                                    </ng-template>
+                                </td>
+                                <td>
+                                    <span *ngIf='(user.email == null)'>{{EmailAdd}}
+                                        <input type="button" class="btn btn-primary" value="Add" (click)="addPocEmail(user.id, user.new)">
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-12" style="background-color: #fff;border: 1px solid rgb(234, 229, 229) !important;">
+                <ul class="nav nav-pills">
+                    <li class="nav-item" *ngFor='let p of pages; let i=index'>
+                        <a href="" class="nav-link" (click)=setPage(i,$event)>{{i+1}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

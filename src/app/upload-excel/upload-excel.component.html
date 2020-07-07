@@ -1,0 +1,49 @@
+<!-- <div class="dropzone" appDragAndDrop *ngIf="!files.length" class="col-12 rmpm dropzone" appDrag
+    (files)="filesDropped($event)">
+    <input type="file" #fileDropRef id="fileDropRef" multiple> -->
+<!-- <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event.target.files)> -->
+<!-- <h3>Drag drop file here</h3>
+    <i aria-hidden="true" class="fa fa-file-excel" style="font-size: 100px;color: #777784;margin-top: 10px;"></i>
+</div> -->
+<!-- 
+<div class="dropzone1">
+    <div *ngFor="let file of files">
+        <div>
+            <i aria-hidden="true" class="fa fa-file-excel" style="font-size: 50px;color: #2929a3;"></i>
+            <div>{{file.name}}</div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-success" (click)="upload()" style="margin-top: 10px;">Upload Image</button>
+</div> -->
+
+<div *ngFor="let progressInfo of progressInfos" class="mb-2">
+    <span>{{ progressInfo.fileName }}</span>
+    <div class="progress">
+        <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+            attr.aria-valuenow="{{ progressInfo.value }}" aria-valuemin="0" aria-valuemax="100"
+            [ngStyle]="{ width: progressInfo.value + '%' }">
+            {{ progressInfo.value }}%
+        </div>
+    </div>
+</div>
+
+<label class="btn btn-default">
+    <input type="file" multiple (change)="selectFiles($event)"
+        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+</label>
+
+<button class="btn btn-success" [disabled]="!selectedFiles" (click)="uploadFiles()">
+    Upload
+</button>
+
+<div class="alert alert-light" role="alert">{{ message }}</div>
+
+<!-- <div class="card">
+    <div class="card-header">List of Files</div>
+    <ul class="list-group list-group-flush" *ngFor="let file of fileInfos | async">
+        <li class="list-group-item">
+            <a href="{{ file.url }}">{{ file.name }}</a>
+        </li>
+    </ul>
+</div> -->

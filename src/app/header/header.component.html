@@ -1,0 +1,71 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #2929a3;margin-bottom: 30px;">
+        <div><a href="/" class="navbar-brand"><i class="fa fa-handshake hand-rotate" aria-hidden="true"></i>
+                <b>Outreach</b> FMS</a></div>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div *ngIf='checkLogin() else navLinkAfterLogin'>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav">
+                    <!-- <li><a *ngIf="loginService.isUserLoggedIn()" routerLink="/" class="nav-link">View Employees</a></li> -->
+                    <li><a routerLink="dashboard" class="nav-link navbar-text-white"><i class="fa fa-th-large"
+                                aria-hidden="true"></i> Dashboard</a></li>
+                    <li><a routerLink="event" class="nav-link navbar-text-white"><i class="fa fa-calendar"
+                                aria-hidden="true"></i> Events</a></li>
+                    <li><a routerLink="reports" class="nav-link navbar-text-white"><i class="fa fa-file-excel"
+                                aria-hidden="true"></i> Reports</a></li>
+
+                    <div *ngIf='getUserDetails().role==1'>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle navbar-text-white" href="#" id="navbardrop"
+                                data-toggle="dropdown">
+                                <i class="fa fa-cog" aria-hidden="true"></i> Configuration
+                            </a>
+                            <div class="dropdown-menu bg-primary navbar-dark">
+                                <a class="dropdown-item navbar-text-white navbar-textBg-whiteTransparent"
+                                    routerLink="addPmo">Add PMO</a>
+                                <a class="dropdown-item navbar-text-white navbar-textBg-whiteTransparent"
+                                    routerLink="addPocEmail">Add POC & Participants Email</a>
+                                <a class="dropdown-item navbar-text-white navbar-textBg-whiteTransparent"
+                                    routerLink="uploadExcel">Upload Excel</a>
+                                <a class="dropdown-item navbar-text-white navbar-textBg-whiteTransparent"
+                                    routerLink="feedback">Add feedback Questions</a>
+                            </div>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+        <ng-template #navLinkAfterLogin>
+
+        </ng-template>
+        <div class="navbar-nav ml-auto">
+            <!-- <a href="#" class="nav-item nav-link navbar-text-white">Register</a> -->
+
+            <div *ngIf='checkLogin() else homeLoginLink'>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle navbar-text-white" href="#" id="navbardrop"
+                        data-toggle="dropdown">
+                        <i style="font-size: larger; margin-right: 5px;" class="fa fa-user-circle"
+                            aria-hidden="true"></i><span class="userName">
+                            {{getUserDetails().name}}
+                        </span>
+                        <span *ngIf="getUserDetails().role == 1">(Admin)</span>
+                        <span *ngIf="getUserDetails().role == 2">(PMO)</span>
+                        <span *ngIf="getUserDetails().role == 3">(POC)</span>
+                    </a>
+                    <div class="dropdown-menu bg-primary navbar-dark">
+                        <a (click)=logout() href="javascript:void(0)"
+                            class="nav-item nav-link navbar-text-white">LogOut</a>
+                    </div>
+                </li>
+            </div>
+            <ng-template #homeLoginLink>
+                <a routerLink="login" class="nav-item nav-link navbar-text-white">LogIn</a>
+            </ng-template>
+        </div>
+    </nav>
+
+</header>

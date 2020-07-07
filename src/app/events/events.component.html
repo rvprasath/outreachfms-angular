@@ -1,0 +1,413 @@
+<div *ngIf='getUserDetails().role==1'>
+    <div class="mx-1">
+        <div class="col-md-12">
+            <a class="collapseBar col-md-12 text-uppercase" data-toggle="collapse" href="#actionExample" role="button"
+                aria-expanded="false" aria-controls="actionExample">
+                Actions
+            </a>
+            <div class="collapse" id="actionExample">
+                <div class="card card-body">
+                    <div class="col-md-12 col-xs-12 form-inline">
+                        <div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 form-inline">
+                            <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2"
+                                style="padding: 12px;color: #14147c;background: #7171cc;border-radius: 4px 0px 0px 4px;">
+                                <i class="iconAlign fa fa-envelope"></i></div>
+                            <div class="col-md-10 col-sm-12 col-xs-12 col-lg-10"
+                                style="padding: 10.4px 8px;color: #14147c;background: #b1b1eb; border-radius: 0px 4px 4px 0px;">
+                                <b style="margin:0;">
+                                    <div>Email Remainder!</div>
+                                </b>
+                                <div class="form-inline">
+                                    <div style="font-size: 12px;">sit back and relax while app send emails! </div>
+                                    <button class="btn btn-default" style="background: #fff;
+                        padding: 3px 5px;margin-left: 5px;
+                        font-size: 10px;" (click)="sendEmailForFeedback()"><b>Send Email</b></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 form-inline">
+                            <div class="col-md-10 col-sm-12 col-xs-12 col-lg-10"
+                                style="padding: 12.7px 8px;color: #0f6429;background: #71ff9d; border-radius: 4px 0px 0px 4px;text-align: right;">
+                                <b style="margin:0;">
+                                    <div>Future Implementations!</div>
+                                </b>
+                                <div style="font-size: 12px;">This placeholder can be used for adding anyother actions
+                                    in
+                                    future.</div>
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2"
+                                style="padding: 12px;color: #0f6429;background: #edc70e;border-radius: 0px 4px 4px 0px;">
+                                <i class="iconAlign fa fa-lightbulb"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf='eventDiv'>
+    <div class="mx-1 my-4">
+        <div class="col-md-12">
+            <a class="collapseBar col-md-12 text-uppercase" data-toggle="collapse" href="#eventExample" role="button"
+                aria-expanded="false" aria-controls="eventExample">
+                Events
+            </a>
+            <div class="collapse" id="eventExample">
+                <div style="height: 500px;">
+                    <div class="card card-body" style="height: 500px;overflow: auto;">
+                        <div class="form-inline ml-auto" style="margin-bottom: 10px;">
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <button class="btn btn-success text-uppercase"
+                                        style="padding: 3px 12px;font-size: 12px;">Clear Filters</button>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <form (ngSubmit)="downloadFileExcel()">
+                                        <button class="btn btn-primary text-uppercase"
+                                            style="padding: 3px 12px;font-size: 12px;">Download
+                                            Excel</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-stripped">
+                            <thead>
+                                <tr>
+                                    <th>Action</th>
+                                    <th>Event ID</th>
+                                    <th>Month</th>
+                                    <th>Base Location</th>
+                                    <th>Council Name</th>
+                                    <th>Beneficiary Name</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngFor='let event of events'>
+                                <tr>
+                                    <td rowspan="2" style="width: 10.5%;"><button class="btn btn-primary"
+                                            style="padding: 2px 15px;background: #2929a3;"
+                                            (click)="viewEventDetails(event.eventId);showHideDiv('event')"><i
+                                                class="fa fa-eye" aria-hidden="true"></i> View</button></td>
+                                    <td>{{event.eventId}}</td>
+                                    <td>{{event.month}}</td>
+                                    <td>{{event.baseLocation}}</td>
+                                    <td>{{event.councilName}}</td>
+                                    <td>{{event.beneficiaryName}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5">
+                                        <table class="innerEventTable" style="width: 100%;">
+                                            <tr>
+                                                <td><b>Event Name</b></td>
+                                                <td>{{event.eventName}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Event Date</b></td>
+                                                <td>{{event.eventDate}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Business Unit</b></td>
+                                                <td>-</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Status</b></td>
+                                                <td>{{event.status}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Venue Address</b></td>
+                                                <td>{{event.venueAddress}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Total Volunteers</b></td>
+                                                <td>{{event.totalNoOfVolunteer}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Total Volunteer Hours</b></td>
+                                                <td>{{event.volunteerHours}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>Total Travel Hours</b></td>
+                                                <td>{{event.totalTravelHours}}</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12" style="background-color: #fff;border: 1px solid rgb(234, 229, 229) !important;">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item" *ngFor='let p of pages; let i=index'>
+                            <a href="" class="nav-link" (click)=setPage(i,$event)>{{i+1}}</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div *ngIf='eventDetailsDiv'>
+    <div class="mx-1 my-4">
+        <div class="col-md-12">
+            <a class="collapseBar col-md-12 text-uppercase" data-toggle="collapse" href="#eventDetailExample"
+                role="button" aria-expanded="false" aria-controls="eventDetailExample">
+                Event & beneficiary details
+            </a>
+            <div class="collapse" id="eventDetailExample">
+                <div class="card card-body">
+                    <div class="row">
+                        <div class="col-md-6 col-xs-6">
+                            <div>
+                                <div class="col-md-12 collapseBar" style="padding: 20px;display: inline-table;">
+                                    <div>
+                                        <div style="float: left;display: inline-flex;"
+                                            *ngIf="eventDetailsObj !== undefined">ID: {{eventDetailsObj.eventId}}</div>
+                                        <div style="float: right;display: inline-flex;"
+                                            *ngIf="eventDetailsObj !== undefined">Date: {{eventDetailsObj.eventDate}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="collapse" id="eventDetailExample">
+                                    <div class="card card-body" style="border: none;padding: 0px;">
+                                        <div class="col-md-12 col-xs-12 form-inline" style="padding: 10px 10px;">
+                                            <div class="col-md-12">
+                                                <p class="text-center" *ngIf="eventDetailsObj !== undefined">
+                                                    <b>{{eventDetailsObj.eventName}}</b></p>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <p class="text-center" *ngIf="eventDetailsObj !== undefined">
+                                                    <sub>{{eventDetailsObj.eventDescription}}</sub></p>
+                                            </div>
+                                        </div>
+                                        <div style="background-color: rgb(233, 222, 222);padding: 0px !important;">
+                                            <div class="col-md-12" style="padding: 10px;display: inline-table;">
+                                                <div>
+                                                    <div style="float: left;display: inline-flex;"><span
+                                                            style="font-size: 13px;"><b>status:</b></span>
+                                                        <span class="bg-success"
+                                                            style="font-size: 10px;padding: 1px 3px;margin: 0px 3px;color: #fff;border-radius: 2px;"
+                                                            *ngIf="eventDetailsObj !== undefined">{{eventDetailsObj.status}}</span>
+                                                    </div>
+                                                    <div style="float: right;display: inline-flex;"><span
+                                                            style="font-size: 13px;"><b>Category:</b></span>
+                                                        <span style="font-size: 10px;padding: 3px;"
+                                                            *ngIf="eventDetailsObj !== undefined">{{eventDetailsObj.category}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-xs-6">
+                            <div>
+                                <div class="col-md-12 collapseBar" style="padding: 20px;display: inline-table;">
+                                    <div>
+                                        <div style="float: left;display: inline-flex;"
+                                            *ngIf="eventDetailsObj !== undefined">Location:
+                                            {{eventDetailsObj.baseLocation}}</div>
+                                        <div style="float: right;display: inline-flex;"
+                                            *ngIf="eventDetailsObj !== undefined">Council:
+                                            {{eventDetailsObj.councilName}}</div>
+                                    </div>
+                                </div>
+                                <div class="collapse" id="eventDetailExample">
+                                    <div class="card card-body" style="border: none;padding: 0px;">
+                                        <div class="col-md-12 col-xs-12 form-inline" style="padding: 10px 10px;">
+                                            <div class="col-md-12">
+                                                <p class="text-center" *ngIf="eventDetailsObj !== undefined">
+                                                    <b>{{eventDetailsObj.beneficiaryName}}</b></p>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <p class="text-center" *ngIf="eventDetailsObj !== undefined">
+                                                    <sub>{{eventDetailsObj.venueAddress}}</sub></p>
+                                            </div>
+                                        </div>
+                                        <div style="background-color: rgb(233, 222, 222);padding: 0px !important;">
+                                            <div class="col-md-12" style="padding: 10px;display: inline-table;">
+                                                <div>
+                                                    <div style="float: left;display: inline-flex;"><span
+                                                            style="font-size: 13px;"><b>feedbacks:</b></span>
+                                                        <span
+                                                            style="font-size: 10px;background-color: rgb(176, 211, 49);padding: 1px 3px;margin: 0px 3px;color: #fff;border-radius: 2px;">{{eventDetailsFeedback.userFeedbackAnswers.length}}</span>
+                                                    </div>
+                                                    <div style="float: right;display: inline-flex;"><span
+                                                            style="font-size: 10px;padding: 1px 3px;margin: 0px 3px;border-radius: 2px;"><b>Average
+                                                                Ratings:</b></span>
+                                                        <span
+                                                            style="font-size: 10px;background-color: rgb(46, 21, 116);padding: 1px 3px;margin: 0px 3px;color: #fff;border-radius: 2px;">{{eventDetailsFeedback.averageRating}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <a class="collapseBar col-md-12 text-uppercase" data-toggle="collapse" href="#participatedExample"
+                role="button" aria-expanded="false" aria-controls="participatedExample">
+                Participated
+            </a>
+            <div class="collapse" id="participatedExample">
+                <div class="card card-body" style="overflow: auto;max-height: 200px;">
+                    <div *ngFor="let feedback of eventDetailsFeedback.userFeedbackAnswers">
+                        <div class="col-md-12 col-xs-12 form-inline" *ngIf="feedback.feedbackType == 'PC'">
+                            <table class="table table-stripped">
+                                <tbody>
+                                    <tr>
+                                        <td>Ratings: {{feedback.rating}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Likes: {{feedback.likeAnswer}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Dislikes: {{feedback.dislikeAnswer}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <a class="collapseBar col-md-12 text-uppercase" data-toggle="collapse" href="#nonParticipatedExample"
+                role="button" aria-expanded="false" aria-controls="nonParticipatedExample">
+                Non Participated
+            </a>
+            <div class="collapse" id="nonParticipatedExample">
+                <div class="card card-body" style="overflow: auto;max-height: 200px;">
+                    <div *ngFor="let feedback of eventDetailsFeedback.userFeedbackAnswers">
+                        <div class="col-md-12 col-xs-12 form-inline" *ngIf="feedback.feedbackType == 'NA'">
+                            <table class="table table-stripped">
+                                <tbody>
+                                    <tr>
+                                        <td>{{feedback.choiceAnswer}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <a class="collapseBar col-md-12 text-uppercase" data-toggle="collapse" href="#unregisterExample"
+                role="button" aria-expanded="false" aria-controls="unregisterExample">
+                Unregister
+            </a>
+            <div class="collapse" id="unregisterExample">
+                <div class="card card-body" style="overflow: auto;max-height: 200px;">
+                    <div *ngFor="let feedback of eventDetailsFeedback.userFeedbackAnswers">
+                        <div class="col-md-12 col-xs-12 form-inline" *ngIf="feedback.feedbackType == 'UN'">
+                            <table class="table table-stripped">
+                                <tbody>
+                                    <tr>
+                                        <td>{{feedback.choiceAnswer}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6 my-4">
+            <a class="collapseBar col-md-12 text-uppercase" data-toggle="collapse" href="#statisticsExample"
+                role="button" aria-expanded="false" aria-controls="statisticsExample">
+                Statistics
+            </a>
+            <div class="collapse" id="statisticsExample">
+                <div class="card card-body">
+                    <div class="col-md-12 col-xs-12 form-inline" style="overflow: auto;">
+                        <table class="table table-stripped">
+                            <thead>
+                                <tr class="thColor">
+                                    <th>Average Ratings</th>
+                                    <th>Volunteers</th>
+                                    <th>Volunteering Hours</th>
+                                    <th>Overall Hours</th>
+                                    <th>Travel Hours</th>
+                                    <th>Lives Impacted</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{eventDetailsFeedback.averageRating}}</td>
+                                    <td><span *ngIf="eventDetailsObj !== undefined">
+                                            {{eventDetailsObj.totalNoOfVolunteer}}</span></td>
+                                    <td><span *ngIf="eventDetailsObj !== undefined">
+                                            {{eventDetailsObj.volunteerHours}}</span></td>
+                                    <td><span *ngIf="eventDetailsObj !== undefined">
+                                            {{eventDetailsObj.overallVolunteeringHours}}</span></td>
+                                    <td><span *ngIf="eventDetailsObj !== undefined">
+                                            {{eventDetailsObj.totalNoOfVolunteer}}</span></td>
+                                    <td><span *ngIf="eventDetailsObj !== undefined">
+                                            {{eventDetailsObj.livesImpacted}}</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 my-4">
+            <a class="collapseBar col-md-12 text-uppercase" data-toggle="collapse" href="#pocDetailsExample"
+                role="button" aria-expanded="false" aria-controls="pocDetailsExample">
+                Poc Details
+            </a>
+            <div class="collapse" id="pocDetailsExample">
+                <div class="card card-body">
+                    <div class="col-md-12 col-xs-12 form-inline" style="overflow: auto;">
+                        <table class="table table-stripped">
+                            <thead>
+                                <tr class="thColor">
+                                    <th>S.NO</th>
+                                    <th>Employee Id</th>
+                                    <th>Name</th>
+                                    <th>Contact Number</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><span *ngIf="eventDetailsObj !== undefined">
+                                            {{eventDetailsObj.pocId}}</span></td>
+                                    <td>Rati<span *ngIf="eventDetailsObj !== undefined">
+                                            {{eventDetailsObj.pocName}}</span>ngs</td>
+                                    <td><span *ngIf="eventDetailsObj !== undefined">
+                                            {{eventDetailsObj.pocContactNo}}</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mx-1 my-4">
+        <div class="col-md-12"><button class="btn btn-success" (click)="showHideDiv('eventDetail')">Back</button></div>
+    </div>
+</div>

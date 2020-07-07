@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-3">
+      <div class="card-counter primary">
+        <i class="fa fa-desktop"></i>
+        <p class="card-headline">TOTAL EVENTS</p>
+        <span class="count-numbers" *ngIf='(dashboardCounts != undefined) else totalEventsCountZero'>{{dashboardCounts.totalEventsCount}}</span>
+        <ng-template #totalEventsCountZero>
+            <span class="count-numbers">0</span>
+        </ng-template>
+        <span class="count-name">view detail<i class="fa fa-arrow-circle-right arrow-card" aria-hidden="true"></i></span>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-counter danger">
+        <i class="fa fa-link"></i>
+        <p class="card-headline">LIVES IMPACTED</p>
+        <span class="count-numbers" *ngIf='(dashboardCounts != undefined) else livesImpactCountZero'>{{dashboardCounts.livesImpactedCount}}</span>
+        <ng-template #livesImpactCountZero>
+            <span class="count-numbers">0</span>
+        </ng-template>
+        <span class="count-name">view detail<i class="fa fa-arrow-circle-right arrow-card" aria-hidden="true"></i></span>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-counter success">
+        <i class="fa fa-users"></i>
+        <p class="card-headline">TOTAL VOLUNTEERS</p>
+        <span class="count-numbers" *ngIf='(dashboardCounts != undefined) else totalVolunteersCountZero'>{{dashboardCounts.totalVolunteersCount}}</span>
+        <ng-template #totalVolunteersCountZero>
+            <span class="count-numbers">0</span>
+        </ng-template>
+        <span class="count-name">view detail<i class="fa fa-arrow-circle-right arrow-card" aria-hidden="true"></i></span>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-counter info">
+        <i class="fa fa-clock"></i>
+        <p class="card-headline">TOTAL PARTICIPANTS</p>
+        <span class="count-numbers" *ngIf='(dashboardCounts != undefined) else totalParticipantCountZero'>{{dashboardCounts.totalParticipantCount}}</span>
+        <ng-template #totalParticipantCountZero>
+            <span class="count-numbers">0</span>
+        </ng-template>
+        <span class="count-name">view detail<i class="fa fa-arrow-circle-right arrow-card" aria-hidden="true"></i></span>
+      </div>
+    </div>
+  </div>

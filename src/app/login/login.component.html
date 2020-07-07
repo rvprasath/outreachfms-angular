@@ -1,0 +1,54 @@
+<div class="row my-5">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto banner">
+        <img src="../assets/image/banner.jpg" alt="Notebook">
+        <div class="content">
+            <h3>Cognizant Outreach FMS App </h3>
+            <p>Download the Cognizant Outreach Feedback Management for IPhone, IPad and Android.</p>
+        </div>
+    </div>
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="row col-md-12 col-sm-12 col-lg-12">
+            <div>
+                <h3><i style="color: #bb1313;" class="fa fa-handshake hand-rotate" aria-hidden="true"></i><span
+                        style="color: #007bff;"> Cognizant
+                    </span><span style="color: #28a745;">Outreachfms</span></h3>
+            </div>
+        </div>
+        <div class="card card-signin my-5">
+            <div class="card-body">
+                <h5 class="card-title text-center">Sign In</h5>
+                <form class="form-signin">
+                    <div class="form-label-group">
+                        <input type="email" id="inputEmail" name="username" class="form-control"
+                            placeholder="Email address" required autofocus [(ngModel)]="username">
+                        <label for="inputEmail"></label>
+                    </div>
+
+                    <div class="form-label-group">
+                        <input type="password" id="inputPassword" name="password" class="form-control"
+                            placeholder="Password" required [(ngModel)]="password">
+                        <label for="inputPassword"></label>
+                    </div>
+
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="customCheck1">
+                        <label class="custom-control-label" for="customCheck1">Remember password</label>
+                    </div>
+                    <button class="btn btn-success btn-block text-uppercase" type="submit" [disabled]="clicked" (click)="authenticLogin();">Sign
+                        me in</button>
+
+                    <!-- <div *ngIf='loginError != undefined'>
+                        <span *ngIf="loginError.error.error == 'Unauthorized'">
+                            Username or password mismatch
+                        </span>
+                    </div> -->
+                </form>
+            </div>
+
+            <!-- <form (ngSubmit)="downloadFileSystem()">
+                <input [(ngModel)]="fileSystemName" name="file-system">
+                <button [disabled]="!fileSystemName" class="btn btn-primary">Download file system</button>
+              </form> -->
+        </div>
+    </div>
+</div>

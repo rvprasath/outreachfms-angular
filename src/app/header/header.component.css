@@ -1,0 +1,9 @@
+.navbar-text-white{
+    color: #fff !important;
+}
+.navbar-textBg-whiteTransparent:hover{
+    background-color: #084d98 !important;
+}
+.hand-rotate{
+    transform: rotateZ(-45deg);
+}

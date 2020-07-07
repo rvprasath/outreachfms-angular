@@ -1,0 +1,92 @@
+<div class="mx-1">
+    <div class="col-md-12">
+        <a class="collapseBar col-md-12 text-uppercase" data-toggle="collapse" href="#actionExample" role="button"
+            aria-expanded="false" aria-controls="actionExample">
+            Assign Pmo
+        </a>
+        <div class="collapse" id="actionExample">
+            <div class="card card-body">
+                <div class="col-md-12 col-xs-12 form-inline">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label for="email">Email ID</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="email" class="form-control" name="email" id="email"
+                                placeholder="Enter Email Address" [(ngModel)]="email">
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input class="btn btn-success" (click)='addPmo()' type="button" value="ADD PMO">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input class="btn btn-danger" (click)='removePmo()' type="button" value="REMOVE PMO">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mx-1 my-4">
+    <div class="col-md-12">
+        <a class="collapseBar col-md-12 text-uppercase" data-toggle="collapse" href="#eventExample" role="button"
+            aria-expanded="false" aria-controls="eventExample">
+            Pmo Users
+        </a>
+        <div class="collapse" id="eventExample">
+            <div>
+                <div class="card card-body" style="overflow-x: auto;">
+                    <div class="form-inline ml-auto" style="margin-bottom: 10px;">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <button class="btn btn-success text-uppercase"
+                                    style="padding: 3px 12px;font-size: 12px;">Clear Filters</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <form (ngSubmit)="downloadFileExcel()">
+                                <button [(ngModel)]="fileName" name="file-system" class="btn btn-primary text-uppercase"
+                                    style="padding: 3px 12px;font-size: 12px;">Download
+                                    Excel</button>
+                                    </form>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let user of users; let i = index'>
+                                <td>{{user.email}}</td>
+                                <td>{{user.name}}</td>
+                                <td>null</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-12" style="background-color: #fff;border: 1px solid rgb(234, 229, 229) !important;">
+                <ul class="nav nav-pills">
+                    <li class="nav-item" *ngFor='let p of pages; let i=index'>
+                        <a href="" class="nav-link" (click)=setPage(i,$event)>{{i+1}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

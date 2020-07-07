@@ -1,0 +1,152 @@
+<div>
+    <div class="mx-1">
+        <div class="col-md-12">
+            <a class="collapseBar col-md-12 text-uppercase" data-toggle="collapse" href="#actionExample" role="button"
+                aria-expanded="false" aria-controls="actionExample">
+                Actions
+            </a>
+            <div class="collapse" id="actionExample">
+                <div class="card card-body">
+                    <div class="col-md-12 col-xs-12 form-inline">
+                        <div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 form-inline">
+                            <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2"
+                                style="padding: 12px;color: #195f5f;background: #68a4a4;border-radius: 4px 0px 0px 4px;">
+                                <i class="iconAlign fa fa-envelope"></i></div>
+                            <div class="col-md-10 col-sm-12 col-xs-12 col-lg-10"
+                                style="padding: 10.4px 8px;color: #0d4f4f;background: #60f4f4; border-radius: 0px 4px 4px 0px;">
+                                <b style="margin:0;">
+                                    <div>Email Remainder!</div>
+                                </b>
+                                <div class="form-inline">
+                                    <div style="font-size: 12px;">EmployeeId: <input type="text" name=""
+                                            placeholder="Enter Email Address" class="form-control"
+                                            style="width: 60%;height: 22px; font-size: 12px; float: right;" [(ngModel)]="emailReport"></div>
+                                    <button class="btn btn-default" style="background: #195f5f;
+                        padding: 3px 5px;margin-left: 5px;
+                        font-size: 10px;" (click)="sendReportExcelInEmail()"><b style="color: #fff;">Send Email</b></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-12 col-sm-12 col-lg-6 form-inline">
+                            <div class="col-md-10 col-sm-12 col-xs-12 col-lg-10"
+                                style="padding: 12.7px 8px;color: #0f6429;background: #71ff9d; border-radius: 4px 0px 0px 4px;text-align: right;">
+                                <b style="margin:0;">
+                                    <div>Future Implementations!</div>
+                                </b>
+                                <div style="font-size: 12px;">This placeholder can be used for adding anyother actions
+                                    in
+                                    future.</div>
+                            </div>
+                            <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2"
+                                style="padding: 12px;color: #0f6429;background: #edc70e;border-radius: 0px 4px 4px 0px;">
+                                <i class="iconAlign fa fa-lightbulb"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mx-1 my-4">
+    <div class="col-md-12">
+        <a class="collapseBar col-md-12 text-uppercase" data-toggle="collapse" href="#eventExample" role="button"
+            aria-expanded="false" aria-controls="eventExample">
+            Events Report
+        </a>
+        <div class="collapse" id="eventExample">
+            <div style="height: 550px;">
+                <div class="card card-body" style="height: 550px;overflow: auto;">
+                    <div class="form-inline ml-auto" style="margin-bottom: 10px;">
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <button class="btn btn-success text-uppercase"
+                                    style="padding: 3px 12px;font-size: 12px;">Clear Filters</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <form (ngSubmit)="downloadFileExcel()">
+                                <button class="btn btn-primary text-uppercase"
+                                    style="padding: 3px 12px;font-size: 12px;">Download
+                                    Excel</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-stripped">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Event ID</th>
+                                <th>Month</th>
+                                <th>Beneficiary Name</th>
+                                <th>Base Location</th>
+                                <th>Council Name</th>
+                                <th>Project</th>
+                                <th>Business Unit</th>
+                                <th>
+                                    <table style="width: 100%;">
+                                        <tbody>
+                                            <tr>
+                                                <th colspan="2">Rating</th>
+                                            </tr>
+                                        </tbody>
+                                        <tbody>
+                                            <tr>
+                                                <th>Average</th>
+                                                <th>Star</th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </th>
+                                <th>Status</th>
+                                <th>Volunteers</th>
+                                <th>Volunteering Hours</th>
+                                <th>Overall Hours</th>
+                                <th>Travel Hours</th>
+                                <th>Lives Impacted</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let event of events; let i = index'>
+                                <td>{{i+1}}</td>
+                                <td>{{event.eventId}}</td>
+                                <td>{{event.month}}</td>
+                                <td>{{event.beneficiaryName}}</td>
+                                <td>{{event.baseLocation}}</td>
+                                <td>{{event.councilName}}</td>
+                                <td>{{event.project}}</td>
+                                <td>businessUnit</td>
+                                <td>
+                                    <table style="width: 100%;border: none !important;height: 69px;">
+                                        <tbody>
+                                            <tr>
+                                                <td>{{event.overallRating}}</td>
+                                                <td>{{event.overallRating}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td>{{event.status}}</td>
+                                <td>{{event.totalNoOfVolunteer}}</td>
+                                <td>{{event.volunteerHours}}</td>
+                                <td>{{event.overallVolunteeringHours}}</td>
+                                <td>{{event.totalTravelHours}}</td>
+                                <td>{{event.livesImpacted}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-12" style="background-color: #fff;border: 1px solid rgb(234, 229, 229) !important;">
+                <ul class="nav nav-pills">
+                    <li class="nav-item" *ngFor='let p of pages; let i=index'>
+                        <a href="" class="nav-link" (click)=setPage(i,$event)>{{i+1}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+    </div>
+</div>

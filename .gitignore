@@ -1,0 +1,64 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
+/dist
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+# dependencies
+/node_modules
+
+# profiling files
+
+chrome-profiler-events*.json
+speed-measure-plugin*.json
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+.DS_Store
+Thumbs.db
+report.20200701.011421.3588.0.001.json
+report.20200701.014746.2160.0.001.json
+report.20200702.024738.15072.0.001.json
+report.20200705.031003.27572.0.001.json
+report.20200705.111543.2732.0.001.json
+report.20200705.113909.13176.0.001.json
+report.20200705.160625.1736.0.001.json
+report.20200705.173308.13508.0.001.json
+report.20200705.201351.20040.0.001.json
+report.20200706.013621.11432.0.001.json
+report.20200706.105248.7736.0.001.json
+report.20200706.112445.10960.0.001.json
+report.20200706.190638.16912.0.001.json
+report.20200706.192934.13440.0.001.json
+report.20200706.200226.22420.0.001.json
+report.20200706.224609.16928.0.001.json
+report.20200707.003533.23240.0.001.json
