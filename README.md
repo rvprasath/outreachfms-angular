@@ -49,14 +49,23 @@ then the url should be <pre>http://<span></span>192.168.1.1:8082</pre>
 
 Open visual studio code then in the side menu open the source control and clone this git repository.
 
+As the cloned repository contains only source file, the application needs nodemodules to start the application.
+for that nodemodules needs to be installed.
+<pre>npm install</pre>
+the above command install the nodemodules into the application.
+
 Then build the application using the command.
 <pre>ng build</pre>
 
-This application must be start with the command
+This application must be started with the command
 <pre>npm start</pre>
 this will auto configure the CORS dev proxy.
 
 otherway to run the application is
 <pre>ng serve --proxy-config proxy.conf.json</pre>
 here the application is started manually by enaabling the proxy.
+
+The most importantly run the outreach fms spring boot application on the other hand for communication between both the servers.
+
+
 
