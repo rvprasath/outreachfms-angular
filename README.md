@@ -1,4 +1,5 @@
 # Outreachfms
+## Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.0.
 
@@ -39,7 +40,7 @@ The above is the code snippet of the CORS dev server proxy config file.
 
 The above line contains the url, which is the url of the spring boot application of outreach fms running in the localhost.
 This need to be changed accordingly to the environment. incase if the spring boot application is running in the ip 192.168.1.1 in port 8082
-then the url should be <pre>http://192.168.1.1:8082</pre>
+then the url should be <pre>http://<span></span>192.168.1.1:8082</pre>
 
 <b>Running the application </b>
 
